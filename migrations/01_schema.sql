@@ -37,6 +37,7 @@ CREATE TABLE properties
   active BOOLEAN NOT NULL DEFAULT TRUE
 );
 
+
 CREATE TABLE reservations
 (
   id SERIAL PRIMARY KEY NOT NULL,
