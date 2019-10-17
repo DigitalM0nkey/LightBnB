@@ -1,32 +1,32 @@
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Jimmy-Bob Lewis', 'jb@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Jimmy-Bob Lewis', 'jb@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Jay Bean', 'jb@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Jay Bean', 'jb@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Kelly Smellhead', 'KS@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Kelly Smellhead', 'KS@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Penolepe Lucus', 'PL@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Penolepe Lucus', 'PL@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Nicole Smellybottem', 'smelly@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Nicole Smellybottem', 'smelly@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO users
   (name,email,password)
 VALUES
-  ('Kenny Rodge', 'lol@bing.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u' );
+  ('Kenny Rodge', 'lol@bing.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.' );
 
 INSERT INTO properties
   (title,description,thumbnail_photo_url,cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code, active)
