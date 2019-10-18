@@ -1,21 +1,9 @@
-const { Pool } = require('pg');
+
 const properties = require('./json/properties.json');
 const users = require('./json/users.json');
-
-
-
-const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'lightbnb'
-});
-
+const db = require('../server/db');
 
 /// Users
-
-
-
 
 /**
  * Get a single user from the database given their email.
@@ -23,23 +11,13 @@ const pool = new Pool({
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithEmail = function(email) {
-  return pool.query(`
+  return db.query(`
 SELECT * 
 FROM users
 WHERE email = $1
 `, [email])
     .then(res => res.rows[0])
     .catch(err => console.error('query error', err.stack));
-  // let user;
-  // for (const userId in users) {
-  //   user = users[userId];
-  //   if (user.email.toLowerCase() === email.toLowerCase()) {
-  //     break;
-  //   } else {
-  //     user = null;
-  //   }
-  // }
-  // return Promise.resolve(user);
 };
 exports.getUserWithEmail = getUserWithEmail;
 
@@ -49,7 +27,7 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function(id) {
-  return pool.query(`
+  return db.query(`
   SELECT *
   FROM users
   WHERE id = $1
@@ -57,7 +35,6 @@ const getUserWithId = function(id) {
     .then(res => res.rows[0])
     .catch(err => console.log('OH NO getUserWithID ', err.stack)
     );
-  //return Promise.resolve(users[id]);
 };
 exports.getUserWithId = getUserWithId;
 
@@ -70,7 +47,7 @@ exports.getUserWithId = getUserWithId;
 const addUser = function(user) {
   const text = 'INSERT INTO users(name, email,password) VALUES($1, $2, $3) RETURNING *';
   const values = [user.name, user.email, user.password];
-  return pool.query(text, values)
+  return db.query(text, values)
     .then(res => res.rows[0])
     .catch(err => console.log('OH NO addUser ', err.stack)
     );
@@ -86,7 +63,7 @@ exports.addUser = addUser;
  */
 const getAllReservations = function(guest_id, limit = 10) {
 
-  return pool.query(`
+  return db.query(`
   SELECT properties.*, reservations.*, avg(rating) as average_rating
   FROM reservations
     JOIN properties ON reservations.property_id = properties.id
@@ -156,7 +133,7 @@ const getAllProperties = function(options, limit = 10) {
   console.log(queryString, queryParams);
 
   // 6
-  return pool.query(queryString, queryParams)
+  return db.query(queryString, queryParams)
     .then(res => res.rows);
 };
 exports.getAllProperties = getAllProperties;
@@ -170,7 +147,7 @@ exports.getAllProperties = getAllProperties;
 const addProperty = function(property) {
   const text = 'INSERT INTO properties(title,description,thumbnail_photo_url,cover_photo_url,cost_per_night,street,city,province,post_code,country,parking_spaces,number_of_bathrooms,number_of_bedrooms) VALUES($1, $2, $3, $4, $5, $6,$7,$8,$9,$10,$11,$12,$13) RETURNING * ';
   const values = [property.title, property.description, property.thumbnail_photo_url, property.cover_photo_url, property.cost_per_night, property.street, property.city, property.province, property.post_code, property.country, property.parking_spaces, property.number_of_bathrooms, property.number_of_bedrooms];
-  return pool.query(text, values)
+  return db.query(text, values)
     .then(res => {
       console.log(res.rows[0]);
       res.rows[0];
